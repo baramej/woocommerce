@@ -45,3 +45,7 @@
 
 ## [0.9.7] .
   * Quick Bug Fixes.
+
+## [0.9.8]
+  * Added Json Serializeable.
+  * Made the WooProduct model Json Serializeable.

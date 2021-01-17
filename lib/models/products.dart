@@ -31,8 +31,13 @@
 
  */
 
+import 'package:json_annotation/json_annotation.dart';
+
 import 'product_category.dart';
 
+part 'products.g.dart';
+
+@JsonSerializable()
 class WooProduct {
   final int id;
   final String name;
@@ -41,55 +46,89 @@ class WooProduct {
   final String type;
   final String status;
   final bool featured;
+  @JsonKey(name: 'catalog_visibility')
   final String catalogVisibility;
   final String description;
+  @JsonKey(name: 'short_description')
   final String shortDescription;
   final String sku;
   final String price;
+  @JsonKey(name: 'regular_price')
   final String regularPrice;
+  @JsonKey(name: 'sale_price')
   final String salePrice;
+  @JsonKey(name: 'price_html')
   final String priceHtml;
+  @JsonKey(name: 'on_sale')
   final bool onSale;
   final bool purchasable;
+  @JsonKey(name: 'total_sales')
   final int totalSales;
   final bool virtual;
   final bool downloadable;
   final List<WooProductDownload> downloads;
+  @JsonKey(name: 'download_limit')
   final int downloadLimit;
+  @JsonKey(name: 'download_expiry')
   final int downloadExpiry;
+  @JsonKey(name: 'external_url')
   final String externalUrl;
+  @JsonKey(name: 'button_text')
   final String buttonText;
+  @JsonKey(name: 'tax_status')
   final String taxStatus;
+  @JsonKey(name: 'tax_class')
   final String taxClass;
+  @JsonKey(name: 'manage_stock')
   final bool manageStock;
+  @JsonKey(name: 'stock_quantity')
   final int stockQuantity;
+  @JsonKey(name: 'stock_status')
   final String stockStatus;
   final String backorders;
+  @JsonKey(name: 'backorders_allowed')
   final bool backordersAllowed;
   final bool backordered;
+  @JsonKey(name: 'sold_individually')
   final bool soldIndividually;
   final String weight;
   final WooProductDimension dimensions;
+  @JsonKey(name: 'shipping_required')
   final bool shippingRequired;
+  @JsonKey(name: 'shipping_taxable')
   final bool shippingTaxable;
+  @JsonKey(name: 'shipping_class')
   final String shippingClass;
+  @JsonKey(name: 'shipping_class_id')
   final int shippingClassId;
+  @JsonKey(name: 'reviews_allowed')
   final bool reviewsAllowed;
+  @JsonKey(name: 'average_rating')
   final String averageRating;
+  @JsonKey(name: 'rating_count')
   final int ratingCount;
+  @JsonKey(name: 'related_ids')
   final List<int> relatedIds;
+  @JsonKey(name: 'upsell_ids')
   final List<int> upsellIds;
+  @JsonKey(name: 'cross_sell_ids')
   final List<int> crossSellIds;
+  @JsonKey(name: 'parent_id')
   final int parentId;
+  @JsonKey(name: 'purchase_note')
   final String purchaseNote;
   final List<WooProductCategory> categories;
   final List<WooProductItemTag> tags;
   final List<WooProductImage> images;
   final List<WooProductItemAttribute> attributes;
+  @JsonKey(name: 'default_attributes')
   final List<WooProductDefaultAttribute> defaultAttributes;
   final List<int> variations;
+  @JsonKey(name: 'grouped_products')
   final List<int> groupedProducts;
+  @JsonKey(name: 'menu_order')
   final int menuOrder;
+  @JsonKey(name: 'meta_data')
   final List<MetaData> metaData;
 
   WooProduct(
@@ -151,79 +190,15 @@ class WooProduct {
       this.menuOrder,
       this.metaData);
 
-  WooProduct.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        name = json['name'],
-        slug = json['slug'],
-        permalink = json['permalink'],
-        type = json['type'],
-        status = json['status'],
-        featured = json['featured'],
-        catalogVisibility = json['catalog_visibility'],
-        description = json['description'],
-        shortDescription = json['short_description'],
-        sku = json['sku'],
-        price = json['price'],
-        regularPrice = json['regular_price'],
-        salePrice = json['sale_price'],
-        priceHtml = json['price_html'],
-        onSale = json['on_sale'],
-        purchasable = json['purchasable'],
-        totalSales = json['total_sales'],
-        virtual = json['virtual'],
-        downloadable = json['downloadable'],
-        downloads = (json['downloads'] as List)
-            .map((i) => WooProductDownload.fromJson(i))
-            .toList(),
-        downloadLimit = json['download_limit'],
-        downloadExpiry = json['download_expiry'],
-        externalUrl = json['external_url'],
-        buttonText = json['button_text'],
-        taxStatus = json['tax_status'],
-        taxClass = json['tax_class'],
-        manageStock = json['manage_stock'],
-        stockQuantity = json['stock_quantity'],
-        stockStatus = json['stock_status'],
-        backorders = json['backorders'],
-        backordersAllowed = json['backorders_allowed'],
-        backordered = json['backordered'],
-        soldIndividually = json['sold_individually'],
-        weight = json['weight'],
-        dimensions = WooProductDimension.fromJson(json['dimensions']),
-        shippingRequired = json['shipping_required'],
-        shippingTaxable = json['shipping_taxable'],
-        shippingClass = json['shipping_class'],
-        shippingClassId = json['shipping_class_id'],
-        reviewsAllowed = json['reviews_allowed'],
-        averageRating = json['average_rating'],
-        ratingCount = json['rating_count'],
-        relatedIds = json['related_ids'].cast<int>(),
-        upsellIds = json['upsell_ids'].cast<int>(),
-        crossSellIds = json['cross_sell_ids'].cast<int>(),
-        parentId = json['parent_id'],
-        purchaseNote = json['purchase_note'],
-        categories = (json['categories'] as List)
-            .map((i) => WooProductCategory.fromJson(i))
-            .toList(),
-        tags = (json['tags'] as List).map((i) => WooProductItemTag.fromJson(i)).toList(),
-        images =
-            (json['images'] as List).map((i) => WooProductImage.fromJson(i)).toList(),
-        attributes = (json['attributes'] as List)
-            .map((i) => WooProductItemAttribute.fromJson(i))
-            .toList(),
-        defaultAttributes = (json['default_attributes'] as List)
-            .map((i) => WooProductDefaultAttribute.fromJson(i))
-            .toList(),
-        variations = json['variations'].cast<int>(),
-        groupedProducts = json['grouped_products'].cast<int>(),
-        menuOrder = json['menu_order'],
-        metaData = (json['meta_data'] as List)
-            .map((i) => MetaData.fromJson(i))
-            .toList();
+  factory WooProduct.fromJson(Map<String, dynamic> json) =>
+      _$WooProductFromJson(json);
+  Map<String, dynamic> toJson() => _$WooProductToJson(this);
 
-  @override toString() => "{id: $id}, {name: $name}, {price: $price}, {status: $status}";
+  @override
+  toString() => "{id: $id}, {name: $name}, {price: $price}, {status: $status}";
 }
 
+@JsonSerializable()
 class WooProductItemTag {
   final int id;
   final String name;
@@ -231,15 +206,15 @@ class WooProductItemTag {
 
   WooProductItemTag(this.id, this.name, this.slug);
 
-  WooProductItemTag.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        name = json['name'],
-        slug = json['slug'];
+  factory WooProductItemTag.fromJson(Map<String, dynamic> json) =>
+      _$WooProductItemTagFromJson(json);
+  Map<String, dynamic> toJson() => _$WooProductItemTagToJson(this);
 
-  Map<String, dynamic> toJson() => {'id': id, 'name': name, 'slug': slug};
-  @override toString() => 'Tag: $name';
+  @override
+  toString() => 'Tag: $name';
 }
 
+@JsonSerializable()
 class MetaData {
   final int id;
   final String key;
@@ -247,14 +222,12 @@ class MetaData {
 
   MetaData(this.id, this.key, this.value);
 
-  MetaData.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        key = json['key'],
-        value = json['value'].toString();
-
-  Map<String, dynamic> toJson() => {'id': id, 'key': key, 'value': value};
+  factory MetaData.fromJson(Map<String, dynamic> json) =>
+      _$MetaDataFromJson(json);
+  Map<String, dynamic> toJson() => _$MetaDataToJson(this);
 }
 
+@JsonSerializable()
 class WooProductDefaultAttribute {
   final int id;
   final String name;
@@ -262,19 +235,21 @@ class WooProductDefaultAttribute {
 
   WooProductDefaultAttribute(this.id, this.name, this.option);
 
-  WooProductDefaultAttribute.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        name = json['name'],
-        option = json['option'];
-
-  Map<String, dynamic> toJson() => {'id': id, 'name': name, 'option': option};
+  factory WooProductDefaultAttribute.fromJson(Map<String, dynamic> json) =>
+      _$WooProductDefaultAttributeFromJson(json);
+  Map<String, dynamic> toJson() => _$WooProductDefaultAttributeToJson(this);
 }
 
+@JsonSerializable()
 class WooProductImage {
   final int id;
+  @JsonKey(name: 'date_created')
   final DateTime dateCreated;
+  @JsonKey(name: 'date_created_gmt')
   final DateTime dateCreatedGMT;
+  @JsonKey(name: 'date_modified')
   final DateTime dateModified;
+  @JsonKey(name: 'date_modified_gmt')
   final DateTime dateModifiedGMT;
   final String src;
   final String name;
@@ -283,18 +258,12 @@ class WooProductImage {
   WooProductImage(this.id, this.src, this.name, this.alt, this.dateCreated,
       this.dateCreatedGMT, this.dateModified, this.dateModifiedGMT);
 
-  WooProductImage.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        src = json['src'],
-        name = json['name'],
-        alt = json['alt'],
-        dateCreated = DateTime.parse(json['date_created']),
-        dateModifiedGMT = DateTime.parse(json['date_modified_gmt']),
-        dateModified = DateTime.parse(json['date_modified']),
-        dateCreatedGMT = DateTime.parse(json['date_created_gmt']);
+  factory WooProductImage.fromJson(Map<String, dynamic> json) =>
+      _$WooProductImageFromJson(json);
+  Map<String, dynamic> toJson() => _$WooProductImageToJson(this);
 }
 
-/**
+/*
 class Category {
   final int id;
   final String name;
@@ -316,6 +285,7 @@ class Category {
 }
 */
 
+@JsonSerializable()
 class WooProductDimension {
   final String length;
   final String width;
@@ -323,15 +293,12 @@ class WooProductDimension {
 
   WooProductDimension(this.length, this.height, this.width);
 
-  WooProductDimension.fromJson(Map<String, dynamic> json)
-      : length = json['length'],
-        width = json['width'],
-        height = json['height'];
-
-  Map<String, dynamic> toJson() =>
-      {'length': length, 'width': width, 'height': height};
+  factory WooProductDimension.fromJson(Map<String, dynamic> json) =>
+      _$WooProductDimensionFromJson(json);
+  Map<String, dynamic> toJson() => _$WooProductDimensionToJson(this);
 }
 
+@JsonSerializable()
 class WooProductItemAttribute {
   final int id;
   final String name;
@@ -340,27 +307,15 @@ class WooProductItemAttribute {
   final bool variation;
   final List<String> options;
 
-  WooProductItemAttribute(this.id, this.name, this.position, this.visible, this.variation,
-      this.options);
+  WooProductItemAttribute(this.id, this.name, this.position, this.visible,
+      this.variation, this.options);
 
-  WooProductItemAttribute.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        name = json['name'],
-        position = json['position'],
-        visible = json['visible'],
-        variation = json['variation'],
-        options = json['options'].cast<String>();
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'name': name,
-        'position': position,
-        'visible': visible,
-        'variation': variation,
-        'options': options,
-      };
+  factory WooProductItemAttribute.fromJson(Map<String, dynamic> json) =>
+      _$WooProductItemAttributeFromJson(json);
+  Map<String, dynamic> toJson() => _$WooProductItemAttributeToJson(this);
 }
 
+@JsonSerializable()
 class WooProductDownload {
   final String id;
   final String name;
@@ -368,14 +323,7 @@ class WooProductDownload {
 
   WooProductDownload(this.id, this.name, this.file);
 
-  WooProductDownload.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        name = json['name'],
-        file = json['file'];
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'name': name,
-        'file': file,
-      };
+  factory WooProductDownload.fromJson(Map<String, dynamic> json) =>
+      _$WooProductDownloadFromJson(json);
+  Map<String, dynamic> toJson() => _$WooProductDownloadToJson(this);
 }
