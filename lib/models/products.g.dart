@@ -178,7 +178,7 @@ MetaData _$MetaDataFromJson(Map<String, dynamic> json) {
   return MetaData(
     json['id'] as int,
     json['key'] as String,
-    json['value'] as String,
+    json['value'] as Map<String, dynamic>,
   );
 }
 

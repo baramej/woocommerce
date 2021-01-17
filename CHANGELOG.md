@@ -49,3 +49,6 @@
 ## [0.9.8]
   * Added Json Serializeable.
   * Made the WooProduct model Json Serializeable.
+
+## [0.9.9]
+  * Changed value type from string to Map<String, dynamic> in MetaData model
