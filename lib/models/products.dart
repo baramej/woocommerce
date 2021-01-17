@@ -218,7 +218,7 @@ class WooProductItemTag {
 class MetaData {
   final int id;
   final String key;
-  final Map<String, dynamic> value;
+  final dynamic value;
 
   MetaData(this.id, this.key, this.value);
 

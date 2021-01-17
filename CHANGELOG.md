@@ -52,3 +52,6 @@
 
 ## [0.9.9]
   * Changed value type from string to Map<String, dynamic> in MetaData model
+
+## [0.9.10]
+  * Changed value type from Map<String, dynamic> to dynamic in MetaData model
