@@ -597,7 +597,7 @@ class WooShippingZoneMethodMinAmount {
     label = json['label'];
     description = json['description'];
     type = json['type'];
-    value = json['value'];
+    value = double.tryParse(json['value'].toString()) ?? 0.0;
     typeDefault = json['default'];
     tip = json['tip'];
     placeholder = json['placeholder'];
