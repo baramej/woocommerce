@@ -64,7 +64,9 @@ class WooShippingZoneMethod {
     settings = json['settings'] != null
         ? new WooShippingZoneMethodSettings.fromJson(json['settings'])
         : null;
-    links = json['_links'] != null ? new WooShippingZoneMethodLinks.fromJson(json['_links']) : null;
+    links = json['_links'] != null
+        ? new WooShippingZoneMethodLinks.fromJson(json['_links'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -84,7 +86,9 @@ class WooShippingZoneMethod {
     }
     return data;
   }
-  @override toString() => this.toJson().toString();
+
+  @override
+  toString() => this.toJson().toString();
 }
 
 class WooShippingZoneMethodSettings {
@@ -96,6 +100,7 @@ class WooShippingZoneMethodSettings {
   WooShippingZoneMethodClassCost91 classCost91;
   WooShippingZoneMethodNoClassCost noClassCost;
   WooShippingZoneMethodType type;
+  WooShippingZoneMethodMinAmount minAmount;
 
   WooShippingZoneMethodSettings(
       {this.title,
@@ -105,14 +110,19 @@ class WooShippingZoneMethodSettings {
       this.classCost92,
       this.classCost91,
       this.noClassCost,
-      this.type});
+      this.type,
+      this.minAmount});
 
   WooShippingZoneMethodSettings.fromJson(Map<String, dynamic> json) {
-    title = json['title'] != null ? new WooShippingZoneMethodTitle.fromJson(json['title']) : null;
+    title = json['title'] != null
+        ? new WooShippingZoneMethodTitle.fromJson(json['title'])
+        : null;
     taxStatus = json['tax_status'] != null
         ? new WooShippingZoneMethodTaxStatus.fromJson(json['tax_status'])
         : null;
-    cost = json['cost'] != null ? new WooShippingZoneMethodCost.fromJson(json['cost']) : null;
+    cost = json['cost'] != null
+        ? new WooShippingZoneMethodCost.fromJson(json['cost'])
+        : null;
     classCosts = json['class_costs'] != null
         ? new WooShippingZoneMethodClassCosts.fromJson(json['class_costs'])
         : null;
@@ -125,7 +135,12 @@ class WooShippingZoneMethodSettings {
     noClassCost = json['no_class_cost'] != null
         ? new WooShippingZoneMethodNoClassCost.fromJson(json['no_class_cost'])
         : null;
-    type = json['type'] != null ? new WooShippingZoneMethodType.fromJson(json['type']) : null;
+    type = json['type'] != null
+        ? new WooShippingZoneMethodType.fromJson(json['type'])
+        : null;
+    minAmount = json['min_amount'] != null
+        ? new WooShippingZoneMethodMinAmount.fromJson(json['min_amount'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -153,6 +168,10 @@ class WooShippingZoneMethodSettings {
     }
     if (this.type != null) {
       data['type'] = this.type.toJson();
+    }
+
+    if (this.minAmount != null) {
+      data['min_amount'] = this.minAmount.toJson();
     }
     return data;
   }
@@ -234,8 +253,9 @@ class WooShippingZoneMethodTaxStatus {
     taxDefault = json['default'];
     tip = json['tip'];
     placeholder = json['placeholder'];
-    options =
-        json['options'] != null ? new WooShippingZoneMethodOptions.fromJson(json['options']) : null;
+    options = json['options'] != null
+        ? new WooShippingZoneMethodOptions.fromJson(json['options'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -530,8 +550,9 @@ class WooShippingZoneMethodType {
     typeDefault = json['default'];
     tip = json['tip'];
     placeholder = json['placeholder'];
-    options =
-        json['options'] != null ? new WooShippingZoneMethodOptions.fromJson(json['options']) : null;
+    options = json['options'] != null
+        ? new WooShippingZoneMethodOptions.fromJson(json['options'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -547,6 +568,51 @@ class WooShippingZoneMethodType {
     if (this.options != null) {
       data['options'] = this.options.toJson();
     }
+    return data;
+  }
+}
+
+class WooShippingZoneMethodMinAmount {
+  String id;
+  String label;
+  String description;
+  String type;
+  double value;
+  String typeDefault;
+  String tip;
+  String placeholder;
+
+  WooShippingZoneMethodMinAmount(
+      {this.id,
+      this.label,
+      this.description,
+      this.type,
+      this.value,
+      this.typeDefault,
+      this.tip,
+      this.placeholder});
+
+  WooShippingZoneMethodMinAmount.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    label = json['label'];
+    description = json['description'];
+    type = json['type'];
+    value = json['value'];
+    typeDefault = json['default'];
+    tip = json['tip'];
+    placeholder = json['placeholder'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['label'] = this.label;
+    data['description'] = this.description;
+    data['type'] = this.type;
+    data['value'] = this.value;
+    data['default'] = this.typeDefault;
+    data['tip'] = this.tip;
+    data['placeholder'] = this.placeholder;
     return data;
   }
 }
