@@ -404,34 +404,36 @@ class WooCommerce {
   /// Returns a list of all [WooProduct], with filter options.
   ///
   /// Related endpoint: https://woocommerce.github.io/woocommerce-rest-api-docs/#products.
-  Future<List<WooProduct>> getProducts(
-      {int page,
-      int perPage,
-      String search,
-      String after,
-      String before,
-      String order,
-      String orderBy,
-      String slug,
-      String status,
-      String type,
-      String sku,
-      String category,
-      String tag,
-      String shippingClass,
-      String attribute,
-      String attributeTerm,
-      String taxClass,
-      String minPrice,
-      String maxPrice,
-      String stockStatus,
-      List<int> exclude,
-      List<int> parentExclude,
-      List<int> include,
-      List<int> parent,
-      int offset,
-      bool featured,
-      bool onSale}) async {
+  Future<List<WooProduct>> getProducts({
+    int page,
+    int perPage,
+    String search,
+    String after,
+    String before,
+    String order,
+    String orderBy,
+    String slug,
+    String status,
+    String type,
+    String sku,
+    String category,
+    String tag,
+    String shippingClass,
+    String attribute,
+    String attributeTerm,
+    String taxClass,
+    String minPrice,
+    String maxPrice,
+    String stockStatus,
+    List<int> exclude,
+    List<int> parentExclude,
+    List<int> include,
+    List<int> parent,
+    int offset,
+    bool featured,
+    bool onSale,
+    String lang,
+  }) async {
     Map<String, dynamic> payload = {};
 
     ({
@@ -462,6 +464,7 @@ class WooCommerce {
       'min_price': minPrice,
       'max_price': maxPrice,
       'stock_status': stockStatus,
+      'lang': lang,
     }).forEach((k, v) {
       if (v != null) payload[k] = v.toString();
     });
@@ -627,19 +630,21 @@ class WooCommerce {
   /// Returns a list of all [WooProductAttributeTerm], with filter options.
   ///
   /// Related endpoint: https://woocommerce.github.io/woocommerce-rest-api-docs/#product-attribute-terms
-  Future<List<WooProductAttributeTerm>> getProductAttributeTerms(
-      {@required int attributeId,
-      int page,
-      int perPage,
-      String search,
-      List<int> exclude,
-      List<int> include,
-      String order,
-      String orderBy,
-      bool hideEmpty,
-      int parent,
-      int product,
-      String slug}) async {
+  Future<List<WooProductAttributeTerm>> getProductAttributeTerms({
+    @required int attributeId,
+    int page,
+    int perPage,
+    String search,
+    List<int> exclude,
+    List<int> include,
+    String order,
+    String orderBy,
+    bool hideEmpty,
+    int parent,
+    int product,
+    String slug,
+    String lang,
+  }) async {
     Map<String, dynamic> payload = {};
 
     ({
@@ -654,6 +659,7 @@ class WooCommerce {
       'parent': parent,
       'product': product,
       'slug': slug,
+      'lang': lang,
     }).forEach((k, v) {
       if (v != null) payload[k] = v.toString();
     });
@@ -692,18 +698,20 @@ class WooCommerce {
   ///
   /// Related endpoint: https://woocommerce.github.io/woocommerce-rest-api-docs/#product-categories
 
-  Future<List<WooProductCategory>> getProductCategories(
-      {int page,
-      int perPage,
-      String search,
-      //List<int> exclude,
-      //List<int> include,
-      String order,
-      String orderBy,
-      bool hideEmpty,
-      int parent,
-      int product,
-      String slug}) async {
+  Future<List<WooProductCategory>> getProductCategories({
+    int page,
+    int perPage,
+    String search,
+    //List<int> exclude,
+    //List<int> include,
+    String order,
+    String orderBy,
+    bool hideEmpty,
+    int parent,
+    int product,
+    String slug,
+    String lang,
+  }) async {
     Map<String, dynamic> payload = {};
 
     ({
@@ -711,7 +719,7 @@ class WooCommerce {
       //'exclude': exclude, 'include': include,
       'order': order, 'orderby': orderBy, 'hide_empty': hideEmpty,
       'parent': parent,
-      'product': product, 'slug': slug,
+      'product': product, 'slug': slug, 'lang': lang,
     }).forEach((k, v) {
       if (v != null) payload[k] = v.toString();
     });
