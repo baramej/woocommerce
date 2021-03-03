@@ -41,11 +41,11 @@ class WooCart {
 
   WooCart(
       {this.currency,
-        this.itemCount,
-        this.items,
-        this.needsShipping,
-        this.totalPrice,
-        this.totalWeight});
+      this.itemCount,
+      this.items,
+      this.needsShipping,
+      this.totalPrice,
+      this.totalWeight});
 
   WooCart.fromJson(Map<String, dynamic> json) {
     currency = json['currency'];
@@ -73,7 +73,9 @@ class WooCart {
     data['total_weight'] = this.totalWeight;
     return data;
   }
-  @override toString() => this.toJson().toString();
+
+  @override
+  toString() => this.toJson().toString();
 }
 
 class WooCartItems {
@@ -87,18 +89,21 @@ class WooCartItems {
   String price;
   String linePrice;
   List<String> variation;
+  bool isBogo;
 
-  WooCartItems(
-      {this.key,
-        this.id,
-        this.quantity,
-        this.name,
-        this.sku,
-        this.permalink,
-        this.images,
-        this.price,
-        this.linePrice,
-        this.variation});
+  WooCartItems({
+    this.key,
+    this.id,
+    this.quantity,
+    this.name,
+    this.sku,
+    this.permalink,
+    this.images,
+    this.price,
+    this.linePrice,
+    this.variation,
+    this.isBogo,
+  });
 
   WooCartItems.fromJson(Map<String, dynamic> json) {
     key = json['key'];
@@ -147,12 +152,12 @@ class WooCartImages {
 
   WooCartImages(
       {this.id,
-        this.src,
-        this.thumbnail,
-        this.srcset,
-        this.sizes,
-        this.name,
-        this.alt});
+      this.src,
+      this.thumbnail,
+      this.srcset,
+      this.sizes,
+      this.name,
+      this.alt});
 
   WooCartImages.fromJson(Map<String, dynamic> json) {
     id = json['id'].toString();
