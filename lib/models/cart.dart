@@ -82,6 +82,7 @@ class WooCartItems {
   String key;
   int id;
   int quantity;
+  int bogoQuantity;
   String name;
   String sku;
   String permalink;
@@ -95,6 +96,7 @@ class WooCartItems {
     this.key,
     this.id,
     this.quantity,
+    this.bogoQuantity,
     this.name,
     this.sku,
     this.permalink,
