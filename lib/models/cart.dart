@@ -91,6 +91,7 @@ class WooCartItems {
   String linePrice;
   List<String> variation;
   bool isBogo;
+  String power;
 
   WooCartItems({
     this.key,
@@ -105,6 +106,7 @@ class WooCartItems {
     this.linePrice,
     this.variation,
     this.isBogo,
+    this.power,
   });
 
   WooCartItems.fromJson(Map<String, dynamic> json) {
